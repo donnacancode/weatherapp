@@ -12,22 +12,13 @@ const windEl = document.getElementById("wind");
 const historyEl = document.getElementById("history");
 const forecastEl = document.getElementById("forecast");
 
-searchButton.addEventListener("click", () => {
-  const location = locationInput.value;
-  if (location) {
-    fetchWeather(location);
-    fetchForecast(location);
-    updateHistory(location);
-  }
-});
-
 function fetchWeather(location) {
-  const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}&units=imperial`;
+  const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}&units=imperial`;
 
   fetch(queryURL)
     .then((response) => response.json())
     .then((data) => {
-      const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+      const weatherIcon = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
       locationEl.textContent = data.name;
       dateEl.textContent = new Date().toLocaleDateString();
@@ -43,7 +34,7 @@ function fetchWeather(location) {
 }
 
 function fetchForecast(location) {
-  const queryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${APIKey}&units=imperial`;
+  const queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${APIKey}&units=imperial`;
 
   fetch(queryURL)
     .then((response) => response.json())
@@ -67,7 +58,7 @@ function displayForecast(data) {
   dailyForecast.forEach((item) => {
     const date = new Date(item.dt * 1000).toLocaleDateString();
     const temp = `${Math.round(item.main.temp)} °F`;
-    const icon = `http://openweathermap.org/img/wn/${item.weather[0].icon}.png`;
+    const icon = `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`;
     const desc = item.weather[0].description;
 
     const forecastItem = document.createElement("div");
@@ -107,6 +98,15 @@ function displayHistory() {
     historyEl.appendChild(historyItem);
   });
 }
+
+searchButton.addEventListener("click", () => {
+  const location = locationInput.value;
+  if (location) {
+    fetchWeather(location);
+    fetchForecast(location);
+    updateHistory(location);
+  }
+});
 
 // Display history on page load
 displayHistory();

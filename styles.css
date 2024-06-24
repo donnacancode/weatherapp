@@ -18,6 +18,7 @@ body {
 
 h1 {
   font-size: 24px;
+  color: black; /* Ensure text color is visible */
 }
 
 input[type="text"] {
@@ -40,4 +41,18 @@ button {
 
 .weather-info {
   margin-top: 20px;
+}
+
+.weather-info p {
+  margin: 5px 0; /* Ensure spacing between paragraphs */
+}
+
+.forecast,
+.history {
+  margin-top: 20px;
+}
+
+.forecast-item,
+.history-item {
+  margin: 10px 0; /* Ensure spacing between forecast and history items */
 }
