@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="welcome-container">
       <h1>Welcome to Donna's Weather App!</h1>
       <input type="text" id="locationInput" placeholder="Please enter a city" />
       <button id="searchButton">Away we go!</button>
+    </div>
+    <div class="container" id="weather-container">
       <div class="weather-info">
-        <h2 id="location"></h2>
+        <h1 id="location"></h1>
         <p id="date"></p>
         <img id="icon" alt="Weather icon" />
         <p id="temperature"></p>
@@ -20,13 +22,16 @@
         <p id="humidity"></p>
         <p id="wind"></p>
       </div>
-      <div id="history" class="history">
-        <h3>Search History</h3>
-      </div>
-      <div id="forecast" class="forecast">
-        <h3>Five Day Forecast</h3>
-      </div>
     </div>
+    <div class="container" id="forecast-container">
+      <h1>Five Day Forecast:</h1>
+      <div id="forecast" class="forecast"></div>
+    </div>
+    <div class="container" id="history-container">
+      <h1>Previous Cities:</h1>
+      <div id="history" class="history"></div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
